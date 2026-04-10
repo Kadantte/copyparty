@@ -772,7 +772,9 @@ function langtest() {
 }
 function langtest2() {
 for (var a = 0; a < LANGS.length; a++) {
+	if (!Ls[LANGS[a]]) continue;
 	for (var b = a + 1; b < LANGS.length; b++) {
+		if (!Ls[LANGS[b]]) continue;
 		var i1 = Object.keys(Ls[LANGS[a]]).length > Object.keys(Ls[LANGS[b]]).length ? a : b,
 			i2 = i1 == a ? b : a,
 			t1 = Ls[LANGS[i1]],
@@ -786,6 +788,7 @@ for (var a = 0; a < LANGS.length; a++) {
 	}
 }
 }
+langtest2();
 
 
 
