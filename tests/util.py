@@ -78,8 +78,10 @@ def get_ramdisk():
         return ret
 
     for vol in ["/dev/shm", "/Volumes/cptd"]:  # nosec (singleton test)
-        if os.path.exists(vol):
+        try:
             return subdir(vol)
+        except:
+            pass
 
     if os.path.exists("/Volumes"):
         sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
