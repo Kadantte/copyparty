@@ -1232,6 +1232,9 @@ class SvcHub(object):
             for x in [x.split(" ") for x in al.sftp_key or []]
         }
 
+        if not al.certkey:
+            al.certkey = None
+
         mte = ODict.fromkeys(DEF_MTE.split(","), True)
         al.mte = odfusion(mte, al.mte)
 

@@ -3127,9 +3127,10 @@ when generating hashes using `--ah-cli` for docker or systemd services, make sur
 
 ## https
 
-both HTTP and HTTPS are accepted  by default, but letting a [reverse proxy](#reverse-proxy) handle the https/tls/ssl would be better (probably more secure by default)
+both HTTP and HTTPS are accepted  by default, but please ignore copyparty's built-in https/tls support and instead use a [reverse proxy](#reverse-proxy) to handle https/tls/ssl
 
-copyparty doesn't speak HTTP/2 or QUIC, so using a reverse proxy would solve that as well -- but note that HTTP/1 is usually faster than both HTTP/2 and HTTP/3
+* reverseproxies do a better job following [best practices](https://cipherlist.eu/) meaning they are more secure, and probably also have higher performance
+* also, copyparty doesn't speak HTTP/2 or QUIC, so using a reverse proxy would solve that as well -- but note that HTTP/1 is usually faster than both HTTP/2 and HTTP/3
 
 if [cfssl](https://github.com/cloudflare/cfssl/releases/latest) is installed, copyparty will automatically create a CA and server-cert on startup
 * the certs are written to `--crt-dir` for distribution, see `--help` for the other `--crt` options
@@ -3140,6 +3141,11 @@ to install cfssl on windows:
 * [download](https://github.com/cloudflare/cfssl/releases/latest) `cfssl_windows_amd64.exe`, `cfssljson_windows_amd64.exe`, `cfssl-certinfo_windows_amd64.exe`
 * rename them to `cfssl.exe`, `cfssljson.exe`, `cfssl-certinfo.exe`
 * put them in PATH, for example inside `c:\windows\system32`
+
+if you really wanna give copyparty an existing TLS certificate then do one of the following:
+* `--no-crt --cert server.pem` where `server.pem` is a concatenation of key + cert + chain (in that order), or...
+* `--no-crt --cert server.crt --certkey server.key` where `server.key` is the key, and `server.crt` is a concatenation of cert + chain (in that order)
+* file-extensions don't matter, but all files are expected to be [PEM-style](https://github.com/9001/copyparty/blob/hovudstraum/copyparty/res/insecure.pem)
 
 
 # recovering from crashes
