@@ -5714,7 +5714,7 @@ def up2k_hashlist_from_file(path: str) -> tuple[list[str], os.stat_result]:
     fsz = st.st_size
     csz = up2k_chunksize(fsz)
     ret = []
-    with open(fsenc(path), "rb", 256*1024) as f:
+    with open(fsenc(path), "rb", 256 * 1024) as f:
         while fsz > 0:
             hashobj = hashlib.sha512()
             rem = min(csz, fsz)

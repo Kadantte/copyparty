@@ -62,7 +62,7 @@ def noop(*a, **ka):
     pass
 
 
-def lprint(*a: Any, **ka: Any) -> None:
+def lprint(*a: "Any", **ka: "Any") -> None:
     eol = ka.pop("end", "\n")
     txt = " ".join(unicode(x) for x in a) + eol
     lprinted.append(txt)
@@ -73,7 +73,7 @@ def lprint(*a: Any, **ka: Any) -> None:
 
 
 lprinted: list[str] = []
-LOG: list[Callable[[Any], None]] = [lprint]
+LOG: list["Callable[..., None]"] = [lprint]
 
 
 try:

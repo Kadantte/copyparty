@@ -89,6 +89,7 @@ built in Norway 🇳🇴 with contributions from [not-norway](https://github.com
     * [other flags](#other-flags)
     * [descript.ion](#description) - add a description to each file in a folder
     * [dothidden](#dothidden) - cosmetically hide specific files in a folder
+    * [thumbnail pregen](#thumbnail-pregen) - if you want to pre-generate everything on startup
     * [database location](#database-location) - in-volume (`.hist/up2k.db`, default) or somewhere else
     * [metadata from audio files](#metadata-from-audio-files) - set `-e2t` to index tags on upload
         * [metadata from xattrs](#metadata-from-xattrs) - unix extended file attributes
