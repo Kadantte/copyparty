@@ -3082,10 +3082,10 @@ class AuthSrv(object):
             pwds.extend([x.split(":", 1)[1] for x in pwds if ":" in x])
         if pwds:
             if self.ah.on:
-                zs = r"(\[H\] %s:.*|[?&]%s=)([^&]+)"
+                zs = r"(\[[HO]\] %s:.*|[?&]%s=)([^&]+)"
                 zs = zs % (self.args.pw_hdr, self.args.pw_urlp)
             else:
-                zs = r"(\[H\] %s:.*|=)(" % (self.args.pw_hdr,)
+                zs = r"(\[[HO]\] %s:.*|=)(" % (self.args.pw_hdr,)
                 zs += "|".join(pwds) + r")([]&; ]|$)"
 
             self.re_pwd = re.compile(zs)
